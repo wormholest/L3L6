@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <title>字彙特攻：四大元素之域 (Vocab Quest HD)</title>
     <style>
         :root {
@@ -1535,6 +1536,21 @@ pb.onclick=()=>{if(!activeEnemy||endLock)return;const t=timeLeft;clearInterval(b
 setInterval(()=>{pb.innerText='🧪 藥水 ('+potN()+')';},300);
 addEventListener('keydown',e=>{if((e.key==='h'||e.key==='H')&&!document.querySelector('.modal.active'))usePot();});
 const _rs=renderShop;renderShop=function(){_rs();const hd=document.querySelector('#shop-modal .dialog-header');hd.innerText+='　背包藥水：'+potN()+'（按 H 在地圖上使用）';};
+</script>
+<script>
+document.head.insertAdjacentHTML('beforeend','<style>html,body{overflow:auto!important;height:auto!important;min-height:100vh!important}body{align-items:flex-start!important;padding:10px 0 24px!important}#game-container{transform:none!important;margin:0 auto!important}#review-modal .dialog-box{width:720px;max-height:540px;overflow:auto}#review-modal .ro{padding:6px 10px;margin:4px 0;border:1px solid #7b8fc4;border-radius:4px}#review-modal .ro.ok{border-color:#6fe38f;background:rgba(80,200,120,.18)}#review-modal .ex{margin-top:10px;padding:10px;border:1px dashed #d8c18a;border-radius:5px;line-height:1.7;font-size:14px}</style>');
+const GL=Object.fromEntries('strategy=策略;complexity=複雜性;exceeds=超過;stream=溪流;majesty=雄偉;gorgeous=華麗的;sailor=水手;possessions=財產;exceptional=傑出的;differentiate=區分;known as=被稱為;settle=定居;take a look at=看一看;opposite=相反的;in=在……（end up in 最後落腳於）;in common=有共同點;twice the size of=是…的兩倍大;dense=茂密的;by contrast=相較之下;despite=儘管;soar=高耷;density=密度;stretches=延伸;industrial=工業的;lively=生氣蓬勃的;differs=不同;agricultural=農業的;mountainous=多山的;transportation=交通運輸;be worlds apart=天差地別;equator=赤道;species=物種;cattle=牛隻;sparsely=稀疏地;revenue=收入;skyscrapers=摩天大樓;aboriginal=原住民的;strip=狹長地帶;interchangeable=可互換的;uniform=一致的;substantial=大量的;torment=折磨;induce=引起;comprehensive=全面的;scale=規模;quantities=大量;provoked=激怒;underestimate=低估;allergy=過敏;concerning=關於;take a bite=咬一口;primitive=原始的;takes a heavy toll on=對…造成嚴重損害;livestock=家畜;unethical=不道德的;in other words=換句話說;come at a price=要付出代價;whether=是否;while=然而／當;meat-loving=愛吃肉的;recent=最近的;keeping an eye on=留意;sustainable=永續的;tissue=組織;materials=材料;resulting in=導致;effects=影響;concerns=疑慮;support=支持;jumping to conclusions=騟下結論;emissions=排放物;imitate=模仿;protein=蛋白質;cholesterol=膽固醇;nutrients=營養素;blessing=恩賜;refreeze=重新冷凍;unnatural=不自然的;eliminate=消除;nutritious=營養豐富的;beneath=在…下方;swept=席捲;commerce=商業;tranquil=寧靜的;prominent=著名的;overall=整體的;incidence=發生率;acceleration=加速;acknowledgement=承認;elevator=電梯;set it apart from=使它有別於;therefore=因此;acknowledge=承認;results from=起因於;which=（關係代名詞）;excessive=過量的;over time=隨著時間;accelerated=加速的;contend with=應對;were=（假設語氣）;gather=採集;shift=轉變;sustain=維持;surges=激增;rise=興起;previous=先前的;participate=參與;vast=龐大的;generations=世代;rate=速率;sinking=下沉;flooded=淹沒;amount=數量;flock=蜂擁而至;levels=水位;accidentally=意外地;serious=嚴重的;foundation=地基;confront=面對;conscience=良心;decisive=決定性的;crippled=殘廢的;outline=概要;symphony=交響曲;fatigue=疲勞;flames=火焰;mobile=行動的;oppression=壓迫;captivity=囚禁;gone down in history=名留青史;had he not delivered=（倒裝）若他不曾發表;eloquence=雄辯;turned out=結果是;to consider=去思考;segregated=被隔離的;dignity=尊嚴;where=（關係副詞）;be transformed into=轉變成;join hands=攜手;cigarettes=香菸;racism=種族主義;attempted=企圖;resisted=抵抗;mobility=行動力;vicious=兇殘的;shameful=可恥的;marches=遊行;eloquent=雄辯的;memorial=紀念磑;speaker=演說者;stripped=被剥奪;determination=決心;proclamation=宣言;peacefully=和平地;vivid=生動的;brutality=暴行;arrested=逢捕;inspired=激勵;retreat=撤退'.split(';').map(s=>s.split('=')));
+const rv={l:[],i:0,z:0},rm=document.createElement('div');rm.id='review-modal';rm.className='modal';
+rm.innerHTML='<div class="dialog-box"><div class="dialog-header" id="rv-h"></div><div id="rv-b"></div><div style="display:flex;justify-content:space-between;margin-top:12px"><button id="rv-p">◀ 上一題</button><button id="rv-c">關閉</button><button id="rv-n">下一題 ▶</button></div></div>';document.getElementById('game-container').appendChild(rm);
+const gl=w=>GL[w.toLowerCase()]||'';
+function rvShow(){const q=rv.l[rv.i],w=q.word,g=gl(w);document.getElementById('rv-h').innerText='💎 水晶複習　'+LB[rv.z-1]+'　'+(rv.i+1)+' / '+rv.l.length;
+const s=q.sentence.replace(/<span[^>]*>____<\/span>/,'<b style="color:#8fe38f">'+w+'</b>');
+let o='';q.options.slice().sort().forEach(x=>{o+='<div class="ro'+(x===w?' ok':'')+'">'+(x===w?'✔ ':'✖ ')+x+(gl(x)?'　('+gl(x)+')':'')+'</div>';});
+document.getElementById('rv-b').innerHTML='<div style="line-height:1.7;margin:8px 0">'+s+'</div>'+o+'<div class="ex">📘 解析：正確答案是 <b>'+w+'</b>'+(g?'（'+g+'）':'')+'。把答案填回句中，句意與文法才完整；其他選項在詞義、詞性或用法上都不適合這個空格。<br>💡 記憶：用「'+w+'」再造一個句子，記得更牢！</div>';}
+function openReview(z){rv.z=z;rv.i=0;rv.l=zoneQs(z).map(q=>mkQ(q,z));rvShow();rm.classList.add('active');}
+document.getElementById('rv-p').onclick=()=>{rv.i=(rv.i+rv.l.length-1)%rv.l.length;rvShow();};document.getElementById('rv-n').onclick=()=>{rv.i=(rv.i+1)%rv.l.length;rvShow();};document.getElementById('rv-c').onclick=()=>rm.classList.remove('active');
+const _h6=handleTileInteraction;handleTileInteraction=function(x,y){const z=player.zone;if(z&&maps[z][y][x]===4&&questState.bossesDefeated[z-1]){openReview(z);return false;}return _h6(x,y);};
+let z2=0;setInterval(()=>{if(player.zone!==z2){z2=player.zone;if(z2&&questState.bossesDefeated[z2-1])setTimeout(()=>alert('💎 請走近魔王水晶，可複習本區全部題目與解析'),2800);}},300);
 </script>
 </body>
 </html>
